@@ -1,0 +1,32 @@
+.banner {
+  width: 100%;
+  min-height: 860px;
+  background-blend-mode: multiply;
+  background: rgba(0, 0, 0, 0.7);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  padding-top: 80px;
+  z-index: 1;
+}
+.banner::before {
+  content: " ";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 225px;
+  background-image: url("/img/curva.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (min-width: 2450px) {
+  .banner::before {
+    display: none;
+  }
+}

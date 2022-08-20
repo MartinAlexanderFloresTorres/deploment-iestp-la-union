@@ -1,0 +1,140 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+  color: var(--white);
+  background: transparent;
+  transition: var(--transition-03s);
+}
+.header.activo {
+  background: var(--white);
+  border-bottom: 1px solid #efefef;
+}
+.header.activo .logo,
+.header.activo .link {
+  color: #343434;
+}
+.contenedor {
+  padding: 30px 30px 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  transition: var(--transition-03s);
+}
+.header.activo .contenedor {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.logo {
+  color: var(--white);
+  font-size: 22px;
+  font-weight: bold;
+}
+.logo:hover {
+  color: var(--white);
+}
+.toggles {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.navegacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.link {
+  width: fit-content;
+  margin-right: 5px;
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition-03s);
+  padding: 8px 20px;
+  border-radius: 20px;
+  text-transform: capitalize;
+}
+.link:last-child{
+  margin-right: 0;
+}
+.link:hover,
+.link.active {
+  background: rgb(0, 0, 0, 0.04);
+  color: var(--white);
+}
+.link svg {
+  font-size: 30px;
+}
+.menu {
+  display: none;
+  border: none;
+  padding: 10px;
+  outline: none;
+  background: transparent;
+  color: #fff;
+}
+.menu svg {
+  width: 35px;
+}
+.subNavegacion {
+  display: flex;
+  flex-direction: column;
+}
+.subNavegacion a {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--gray-dark);
+  font-weight: 500;
+  font-size: 20px;
+  background: #fbfbfb;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: var(--transition-03s);
+}
+.subNavegacion a:hover,
+.subNavegacion a.active  {
+  color: var(--black);
+  background: #f4f4f4;
+}
+@media (max-width: 980px) {
+  .header{
+    width: fit-content;
+  }
+  .header.activo {
+    background: transparent;
+    box-shadow: none;
+    border-bottom: none;
+  }
+  .contenedor {
+    padding-top: 20px;
+    padding-left: 20px;
+  }
+  .navegacion {
+    display: none;
+  }
+  .logo {
+    display: none;
+  }
+  .menu {
+    display: block;
+  }
+  .header.activo .menu {
+    display: block;
+    background: var(--white);
+    color: var(--black);
+    border: 1px solid var(--border-gris);
+    border-radius: 10px;
+  }
+}

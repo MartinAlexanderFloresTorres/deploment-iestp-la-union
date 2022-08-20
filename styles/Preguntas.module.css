@@ -1,0 +1,48 @@
+.presentacion {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  color: var(--white);
+  text-align: center;
+}
+.subTitulo {
+  font-size: 25px;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+.titulo {
+  font-size: 50px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+.page {
+  text-align: center;
+  color: var(--gray-all);
+  font-weight: 500;
+  font-size: 18px;
+}
+.contenedor {
+  position: relative;
+  margin-top: -250px;
+  z-index: 100;
+}
+.contenedor button:focus,
+.contenedor button {
+  border: none;
+  box-shadow: none;
+}
+.contenedor button:focus {
+  font-weight: 700;
+}
+@media (max-width: 500px) {
+  .presentacion h1 {
+    font-size: 35px;
+  }
+}

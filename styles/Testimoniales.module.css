@@ -1,0 +1,23 @@
+.swiper{
+  max-width: 100%;
+}
+.item {
+  min-height: 400px;
+  text-align: center;
+  user-select: none;
+  padding: 20px;
+}
+.item img {
+  border-radius: 50%;
+  margin: 0 auto;
+}
+@media (max-width: 500px) {
+  .item {
+    padding: 20px;
+  }
+}
+@media (max-width: 360px) {
+  .item {
+    padding: 20px 10px;
+  }
+}
