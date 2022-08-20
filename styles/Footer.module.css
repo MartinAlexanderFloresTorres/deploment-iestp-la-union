@@ -123,7 +123,7 @@
 }
 .link:hover {
   color: var(--white);
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 .bottom {
   display: flex;

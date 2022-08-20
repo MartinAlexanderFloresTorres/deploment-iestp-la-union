@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Image from "next/image";
 import Banner from "../../components/Banner";
 import Layout from "../../layout/Layout";
-import Image from "next/image";
-import styles from "../../styles/InfoCarrera.module.css";
 import Informate from "../../components/Informate";
 import Requisitos from "../../components/Requisitos";
-import MallaCurricular from "../../components/malla_curricular/mallaCurricular";
+import MallaCurricular from "../../components/malla_curricular/MallaCurricular";
 import { carreras } from "../../data/carreras";
 import Alert from "react-bootstrap/Alert";
 import { formatearDinero, handleBody } from "../../helpers";
 import Modal from "../../components/Modal";
 import { Card } from "react-bootstrap";
+import styles from "../../styles/InfoCarrera.module.css";
 
 export default function InfoCarrera() {
   const [carrera, setCarrera] = useState({});

@@ -65,6 +65,7 @@
   padding: 8px 20px;
   border-radius: 20px;
   text-transform: capitalize;
+  text-decoration: none !important;
 }
 .link:last-child{
   margin-right: 0;
