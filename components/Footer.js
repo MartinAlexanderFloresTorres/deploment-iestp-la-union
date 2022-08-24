@@ -1,24 +1,50 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
-import styles from "../styles/Footer.module.css";
 import { atencion } from "../helpers";
 import useCarreras from "../hooks/useCarreras";
+import Swal from "sweetalert2";
+import emailjs from "@emailjs/browser";
+import styles from "../styles/Footer.module.css";
 
 const Footer = () => {
   const [despegable, setDespegable] = useState(false);
   const [email, setEmail] = useState("");
   const [cargando, setCargando] = useState("");
 
+  const form = useRef();
+
   const { enlaces } = useCarreras();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (email != "") {
       setCargando(true);
-      setTimeout(() => {
-        setEmail("");
-        setCargando(false);
-      }, 3000);
+      emailjs
+        .sendForm(
+          "service_l9tp8h2",
+          "template_9pkwy9t",
+          form.current,
+          "qvDUZguEvOykHjvCD"
+        )
+        .then(
+          (result) => {
+            Swal.fire(
+              "Enviado Correctamente",
+              "Lo contactaremos pronto.",
+              "success"
+            );
+            setEmail("");
+            setCargando(false);
+          },
+          (error) => {
+            console.log(error.text);
+            Swal.fire(
+              "Error",
+              "Algo salio mal, Intente nuevamente.",
+              "success"
+            );
+          }
+        );
     }
   };
 
@@ -31,7 +57,7 @@ const Footer = () => {
       <section className="max">
         <div className={styles.suscripcion}>
           <h2>Contactanos</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} ref={form}>
             <input
               value={email}
               required
@@ -39,6 +65,7 @@ const Footer = () => {
               onChange={(e) => setEmail(e.target.value.trimStart())}
               placeholder="ingrese su email"
               type="email"
+              name="email"
             />
             <input
               className="btn button"

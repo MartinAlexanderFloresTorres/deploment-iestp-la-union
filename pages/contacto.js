@@ -16,7 +16,7 @@ export default function Contacto() {
       </Banner>
       <section
         className={`row max ${styles.contacto}`}
-        style={{ marginBottom: 100 }}
+        style={{ marginBottom: 100, marginLeft: "auto", marginRight: "auto" }}
       >
         <div
           className="col-lg-6 bg-white border p-sm-5 p-4 rounded"

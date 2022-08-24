@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button, Form, Row, Alert } from "react-bootstrap";
 import useCarreras from "../hooks/useCarreras";
 
@@ -13,6 +13,8 @@ export default function Formulario() {
   const [alerta, setAlerta] = useState({ tipo: "", msg: "" });
   const [terminos, setTerminos] = useState(false);
   const [cargando, setCargando] = useState(false);
+
+  const form = useRef();
 
   const { handleEnviarFormulario, setBoton } = useCarreras();
 
@@ -36,49 +38,28 @@ export default function Formulario() {
       });
     } else {
       // enviar formulario
-      try {
-        setAlerta({ tipo: "", msg: "" });
-        setCargando(true);
-        await handleEnviarFormulario(campos);
-        // mostrar alerta success
-        setAlerta({
-          ...alerta,
-          tipo: "success",
-          msg: "Datos enviados correctamente",
-        });
-        // eliminar los campos
-        setCampos({
-          nombre: "",
-          apellidos: "",
-          email: "",
-          carrera: "",
-          mensaje: "",
-        });
-        setTerminos(false);
-        setTimeout(() => {
-          // cerrar el modal
-          setBoton(false);
-        }, 3000);
-      } catch (error) {
-        console.error(error);
-        // mostrar alerta danger
-        setAlerta({
-          ...alerta,
-          tipo: "danger",
-          msg: "Error al enviar los datos",
-        });
-      } finally {
-        // eliminar las alertas
-        setCargando(false);
-        setTimeout(() => {
-          setAlerta({ tipo: "", msg: "" });
-        }, 3000);
-      }
+
+      setAlerta({ tipo: "", msg: "" });
+      setCargando(true);
+      await handleEnviarFormulario(form.current);
+      // eliminar los campos
+      setCampos({
+        nombre: "",
+        apellidos: "",
+        email: "",
+        carrera: "",
+        mensaje: "",
+      });
+      setTerminos(false);
+      setBoton(false);
+
+      // eliminar las alertas
+      setCargando(false);
     }
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} ref={form}>
       <span className="fs-1 fw-bold text-primary">Contacto</span>
       <legend className="fs-5 fw-bold pb-3 text-secondary">
         Comienza tu futuro ahora
